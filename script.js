@@ -11,7 +11,7 @@ topNavigationBar.id="topNavigationBar";
 
 logoDiv.innerText="McBurger";
 body.appendChild(logoDiv);
-
+const ShoppingCartList = [];
 
 const mealSpan = document.createElement("span");
 mealSpan.className="navigationSpans";
@@ -64,6 +64,11 @@ meals.forEach(element => {
             mealsMotherDiv.appendChild(mealsChildDiv);
         } else if(i == 2){
             const btn = document.createElement("button");
+            btn.addEventListener("click", () =>{
+                ShoppingCartList.push(element);
+                ShoppingCartNumberOfItems.innerHTML = ShoppingCartList.length;
+                console.log(ShoppingCartList);
+            });
             btn.innerText = "Add to the Basket";
             btn.className="addtoBasketButton";
             mealsChildDiv.className = "mealsChildDivBtn";
@@ -93,18 +98,19 @@ function hideAll(){
 
 const ShoppingCartMiniViewDiv = document.createElement("div");
 ShoppingCartMiniViewDiv.id = "ShoppingCartMiniViewDiv";
-const ShoppingCartNumerOfItems = document.createElement("div");
-ShoppingCartNumerOfItems.id = "ShoppingCartNumberOfItems"
+const ShoppingCartNumberOfItems = document.createElement("div");
+ShoppingCartNumberOfItems.id = "ShoppingCartNumberOfItems"
 const ShoppingCartTitle = document.createElement("div");
 ShoppingCartTitle.id = "ShoppingCartTitle";
 ShoppingCartTitle.innerText = "Shopping Cart";
-ShoppingCartMiniViewDiv.appendChild(ShoppingCartNumerOfItems);
+ShoppingCartMiniViewDiv.appendChild(ShoppingCartNumberOfItems);
 ShoppingCartMiniViewDiv.appendChild(ShoppingCartTitle);
 shoppingCart.appendChild(ShoppingCartMiniViewDiv);
+ShoppingCartNumberOfItems.innerHTML = ShoppingCartList.length;
 
 let ShoppingCartIndex = 0;
 
-ShoppingCartNumerOfItems.onclick = function () {
+ShoppingCartNumberOfItems.onclick = function () {
     if (ShoppingCartIndex == 0) {
         StretchShoppingCart();
     } else {
@@ -121,6 +127,8 @@ function MinimizeShoppingCart() {
     shoppingCart.style.height = "110px";
     ShoppingCartIndex = 0;
 }
+
+
 
 
 

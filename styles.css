@@ -79,6 +79,7 @@ body{
     padding: 0;
     border: 0;
     gap: 110px;
+    background-color: rgb(37, 26, 26);
 }
 
 #mainSection{
@@ -216,13 +217,26 @@ button{
     justify-content: left;
 }
 #ShoppingCartNumberOfItems{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 65px;
     height: 65px;
     background-color: yellow;
     border-radius: 50%;
-    margin-right: 50px;
+    margin-right: 40px;
     margin-left: 15px;
-    border: 3px solid red;
+    border: 5px solid red;
+    text-shadow:
+    -0.5px -0.5px 0 black,
+    0.5px -0.5px 0 black,
+    -0.5px  0.5px 0 black,
+    0.5px  0.5px 0 black;
+    color:red;
+    font-family: "Luckiest Guy", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
 }
 #ShoppingCartTitle{
     text-shadow:
