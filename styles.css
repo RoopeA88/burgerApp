@@ -64,6 +64,7 @@
      2px -2px 0 black,
     -2px  2px 0 black,
      2px  2px 0 black;
+     text-decoration: underline;
    
 }
 
@@ -92,11 +93,15 @@ body{
 }
 #shoppingCart{
     width: 400px;
-    height: 650px;
+    height: 110px;
     background-color: yellow;
     display:flex;
-    border-radius: 10%;
+    /* border-radius: 10%; */
     border: 3px solid rgb(136, 5, 5);
+    transition: all 0.5s;
+    
+   
+    
 }
 #topNavigationBar{
     height: 175px;
@@ -118,7 +123,7 @@ span{
     font-family: "Luckiest Guy", cursive;
     font-weight: 400;
     font-style: normal;
-    color: red;
+    color: white;
     text-shadow:
     -1px -1px 0 black,
      1px -1px 0 black,
@@ -143,7 +148,7 @@ span{
      1px -1px 0 black,
     -1px  1px 0 black,
      1px  1px 0 black;
-     color: red;
+     color: white;
 }
 
 .mealsChildDivName{
@@ -162,11 +167,12 @@ span{
     
     background-color: yellow;
     border: 3px solid rgb(136, 5, 5);
+    background-color:rgb(136, 5, 5);
     
 }
 .addtoBasketButton:hover{
-    background-color:rgb(136, 5, 5);
-    color: white;
+    background-color: white;
+    color: rgb(136, 5, 5);
 }
 #topNavigationBar{
     border-top: 3px solid rgb(136, 5, 5);
@@ -178,9 +184,55 @@ button{
      0.5px -0.5px 0 black,
     -0.5px  0.5px 0 black,
      0.5px  0.5px 0 black;
-     color:red;
+     color:white;
      font-family: "Luckiest Guy", cursive;
     font-weight: 400;
     font-style: normal;
     height: 35px;
+}
+#ShoppingCartUpperDiv{
+    display: flex;
+    align-items: top;
+    justify-content:center;
+    font-family: "Luckiest Guy", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: red;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+     font-size: 200%;
+}
+#ShoppingCartMiniViewDiv{
+    display: flex;
+    flex-direction: row;
+    
+    width: 400px;
+    height: 110px;
+    background-color: yellow;
+    align-items: center;
+    justify-content: left;
+}
+#ShoppingCartNumberOfItems{
+    width: 65px;
+    height: 65px;
+    background-color: yellow;
+    border-radius: 50%;
+    margin-right: 50px;
+    margin-left: 15px;
+    border: 3px solid red;
+}
+#ShoppingCartTitle{
+    text-shadow:
+    -0.5px -0.5px 0 black,
+     0.5px -0.5px 0 black,
+    -0.5px  0.5px 0 black,
+     0.5px  0.5px 0 black;
+     color:red;
+     font-family: "Luckiest Guy", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
 }

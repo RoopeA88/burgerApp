@@ -64,7 +64,7 @@ meals.forEach(element => {
             mealsMotherDiv.appendChild(mealsChildDiv);
         } else if(i == 2){
             const btn = document.createElement("button");
-            btn.innerText = "Add to Basket";
+            btn.innerText = "Add to the Basket";
             btn.className="addtoBasketButton";
             mealsChildDiv.className = "mealsChildDivBtn";
             mealsChildDiv.appendChild(btn);
@@ -84,4 +84,45 @@ function revealMeals(){
 function hideAll(){
     mealDiv.style.display="none";
 }
+
+
+
+
+
+
+
+const ShoppingCartMiniViewDiv = document.createElement("div");
+ShoppingCartMiniViewDiv.id = "ShoppingCartMiniViewDiv";
+const ShoppingCartNumerOfItems = document.createElement("div");
+ShoppingCartNumerOfItems.id = "ShoppingCartNumberOfItems"
+const ShoppingCartTitle = document.createElement("div");
+ShoppingCartTitle.id = "ShoppingCartTitle";
+ShoppingCartTitle.innerText = "Shopping Cart";
+ShoppingCartMiniViewDiv.appendChild(ShoppingCartNumerOfItems);
+ShoppingCartMiniViewDiv.appendChild(ShoppingCartTitle);
+shoppingCart.appendChild(ShoppingCartMiniViewDiv);
+
+let ShoppingCartIndex = 0;
+
+ShoppingCartNumerOfItems.onclick = function () {
+    if (ShoppingCartIndex == 0) {
+        StretchShoppingCart();
+    } else {
+        MinimizeShoppingCart();
+    }
+};
+
+function StretchShoppingCart() {
+    shoppingCart.style.height = "90vh";
+    ShoppingCartIndex = 1;
+}
+
+function MinimizeShoppingCart() {
+    shoppingCart.style.height = "110px";
+    ShoppingCartIndex = 0;
+}
+
+
+
+
 
