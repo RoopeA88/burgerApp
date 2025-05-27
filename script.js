@@ -8,10 +8,16 @@ mealDiv.id = "mealDiv";
 const shoppingCart = document.createElement("div");
 shoppingCart.id="shoppingCart";
 topNavigationBar.id="topNavigationBar";
+const WelcomeDiv = document.createElement("div");
+WelcomeDiv.id = "WelcomeDiv";
+const WelcomeTextDiv = document.createElement("div");
+WelcomeTextDiv.id = "WelcomeTextDiv";
+WelcomeDiv.appendChild(WelcomeTextDiv);
+WelcomeTextDiv.innerText = "Welcome, valued customer, to the Best Burger delivery! Feel free to order anything from our delicious menu and our delivery personnel will have your order at your door in no time."
 
-logoDiv.innerText="McBurger";
 body.appendChild(logoDiv);
 const ShoppingCartList = [];
+const ShoppingCartSum = [];
 
 const mealSpan = document.createElement("span");
 mealSpan.className="navigationSpans";
@@ -41,6 +47,7 @@ body.appendChild(mainSection);
 body.appendChild(shoppingCart);
 mainSection.appendChild(logoDiv);
 mainSection.appendChild(topNavigationBar);
+mainSection.appendChild(WelcomeDiv);
 mainSection.appendChild(mealDiv);
 
 
@@ -68,6 +75,13 @@ meals.forEach(element => {
                 ShoppingCartList.push(element);
                 ShoppingCartNumberOfItems.innerHTML = ShoppingCartList.length;
                 console.log(ShoppingCartList);
+                let Sum = 0;
+                ShoppingCartList.forEach(element => {
+                    Sum = Sum+element.price;
+                    TotalSumNumber.innerHTML = "$"+Sum.toFixed(2);
+                });
+                
+               
             });
             btn.innerText = "Add to the Basket";
             btn.className="addtoBasketButton";
@@ -81,6 +95,7 @@ meals.forEach(element => {
    mealDiv.appendChild(mealsMotherDiv);
 });
 function revealMeals(){
+    WelcomeDiv.style.display="none";
     mealDiv.style.display="flex";
     mealDiv.style.flexDirection="column";
     mealDiv.style.justifyContent="space-around";
@@ -98,34 +113,59 @@ function hideAll(){
 
 const ShoppingCartMiniViewDiv = document.createElement("div");
 ShoppingCartMiniViewDiv.id = "ShoppingCartMiniViewDiv";
+const TotalSum = document.createElement("div");
+TotalSum.id = "TotalSum";
+
+const TotalSumId = document.createElement("div");
+TotalSumId.innerHTML="Total";
+const TotalSumNumber = document.createElement("div");
+TotalSumNumber.id = "TotalSumNumber";
+TotalSumId.id = "TotalSumId";
+TotalSum.appendChild(TotalSumNumber);
+TotalSum.appendChild(TotalSumId);
+TotalSumNumber.innerHTML="$0";
 const ShoppingCartNumberOfItems = document.createElement("div");
 ShoppingCartNumberOfItems.id = "ShoppingCartNumberOfItems"
 const ShoppingCartTitle = document.createElement("div");
 ShoppingCartTitle.id = "ShoppingCartTitle";
 ShoppingCartTitle.innerText = "Shopping Cart";
 ShoppingCartMiniViewDiv.appendChild(ShoppingCartNumberOfItems);
+
 ShoppingCartMiniViewDiv.appendChild(ShoppingCartTitle);
+const ArrowDiv = document.createElement("div");
+const Arrow = document.createElement("div");
+ArrowDiv.id = "ArrowDiv";
+Arrow.id = "Arrow";
+
+ArrowDiv.appendChild(Arrow);
 shoppingCart.appendChild(ShoppingCartMiniViewDiv);
+shoppingCart.appendChild(ArrowDiv);
+shoppingCart.appendChild(TotalSum);
 ShoppingCartNumberOfItems.innerHTML = ShoppingCartList.length;
 
 let ShoppingCartIndex = 0;
 
-ShoppingCartNumberOfItems.onclick = function () {
+Arrow.onclick = function () {
     if (ShoppingCartIndex == 0) {
         StretchShoppingCart();
     } else {
         MinimizeShoppingCart();
     }
 };
-
+let rotation = 0;
 function StretchShoppingCart() {
     shoppingCart.style.height = "90vh";
     ShoppingCartIndex = 1;
+    
+    rotation += 180;
+    Arrow.style.transform = `rotate(${rotation}deg)`;
 }
 
 function MinimizeShoppingCart() {
-    shoppingCart.style.height = "110px";
+    shoppingCart.style.height = "200px";
     ShoppingCartIndex = 0;
+    rotation += 180;
+    Arrow.style.transform = `rotate(${rotation}deg)`;
 }
 
 
