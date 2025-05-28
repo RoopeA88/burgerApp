@@ -72,7 +72,7 @@ meals.forEach(element => {
         } else if(i == 2){
             const btn = document.createElement("button");
             btn.addEventListener("click", () =>{
-                ShoppingCartList.push(element);
+                PushToList(element);
                 ShoppingCartNumberOfItems.innerHTML = ShoppingCartList.length;
                 console.log(ShoppingCartList);
                 let Sum = 0;
@@ -105,6 +105,12 @@ function hideAll(){
     mealDiv.style.display="none";
 }
 
+function PushToList(element){
+    DeleteItems();
+    
+    ShoppingCartList.push(element);
+    DisplayItems();
+}
 
 
 
@@ -153,12 +159,16 @@ Arrow.onclick = function () {
     }
 };
 let rotation = 0;
+
 function StretchShoppingCart() {
     shoppingCart.style.height = "90vh";
     ShoppingCartIndex = 1;
-    
+    DisplayItems();
     rotation += 180;
     Arrow.style.transform = `rotate(${rotation}deg)`;
+    
+    
+    
 }
 
 function MinimizeShoppingCart() {
@@ -166,7 +176,43 @@ function MinimizeShoppingCart() {
     ShoppingCartIndex = 0;
     rotation += 180;
     Arrow.style.transform = `rotate(${rotation}deg)`;
+    DeleteItems();
+    
+    
 }
+function DisplayItems(){
+    if(ShoppingCartIndex == 1){
+        ShoppingCartList.forEach(element => {
+            const ShoppingCartMotherDiv = document.createElement("div");
+            ShoppingCartMotherDiv.className="ShoppingCartMotherDiv";
+            for(let i = 0; i<3; i++){
+                const ShoppingCartChildDiv = document.createElement("div");
+                ShoppingCartChildDiv.className="ShoppingCartChildDiv";
+                if(i == 0){
+                    ShoppingCartChildDiv.innerHTML="Delete";
+                    ShoppingCartMotherDiv.appendChild(ShoppingCartChildDiv);
+
+                } else if(i == 1){
+                    ShoppingCartChildDiv.innerHTML = element.price;
+                    ShoppingCartMotherDiv.appendChild(ShoppingCartChildDiv);
+                } else if(i == 2){
+                    ShoppingCartChildDiv.innerHTML = element.name;
+                    ShoppingCartMotherDiv.appendChild(ShoppingCartChildDiv);
+                }
+            }
+            shoppingCart.appendChild(ShoppingCartMotherDiv);
+        });
+     
+    }
+ 
+}
+ function DeleteItems(){ 
+    const DeleteMotherDivs = shoppingCart.querySelectorAll(".ShoppingCartMotherDiv");
+    DeleteMotherDivs.forEach(element => {
+        element.remove();
+    });
+ }
+
 
 
 

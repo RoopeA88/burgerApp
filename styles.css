@@ -13,6 +13,12 @@
     font-family: "Luckiest Guy", cursive;
     font-weight: 400;
     font-style: normal;
+    color:white;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
 }
 .navigationSpans:hover{
     background-color: rgb(136, 5, 5);
@@ -22,6 +28,11 @@
     font-family: "Luckiest Guy", cursive;
     font-weight: 400;
     font-style: normal;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
 }
 
 #mealDiv{
@@ -64,7 +75,7 @@
   font-family: "Luckiest Guy", cursive;
     font-weight: 400;
     font-style: normal;
-    color: red;
+    color: white;
     text-shadow:
     -1px -1px 0 black,
      1px -1px 0 black,
@@ -134,7 +145,7 @@ body{
     height: 200px;
     background-color: black;
     display:flex;
-    /* border-radius: 10%; */
+    border-radius: 10px;
     border: 3px solid black;
     transition: all 0.5s;
     flex-direction: column;
@@ -253,6 +264,9 @@ button{
     background-color: yellow;
     align-items: center;
     justify-content: left;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color:white;
 }
 #ShoppingCartNumberOfItems{
     display: flex;
@@ -283,7 +297,7 @@ button{
      1px -1px 0 black,
     -1px  1px 0 black,
      1px  1px 0 black;
-     color:red;
+     color:white;
      font-family: "Luckiest Guy", cursive;
     font-weight: 400;
     font-style: normal;
@@ -307,6 +321,8 @@ button{
     font-weight: 400;
     font-style: normal;
     font-size: 30px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 #TotalSumNumber{
     height: 60px;
@@ -347,4 +363,23 @@ button{
     background-repeat: no-repeat; 
     transition: 0.5s all;
     border: 3px solid black;
+}
+.ShoppingCartMotherDiv{
+    display: flex;
+    flex-direction: row;
+    width: 396px;
+    height: 50px;
+    color: white;
+    align-items: center;
+    
+    border: 2px solid white;
+}
+.ShoppingCartChildDiv{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 132px;
+    color: white;
+    border-right: 2px solid white;
 }
