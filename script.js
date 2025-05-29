@@ -163,7 +163,9 @@ let rotation = 0;
 function StretchShoppingCart() {
     shoppingCart.style.height = "90vh";
     ShoppingCartIndex = 1;
-    DisplayItems();
+    setTimeout(() => {
+        DisplayItems();
+    }, 180); 
     rotation += 180;
     Arrow.style.transform = `rotate(${rotation}deg)`;
     
@@ -190,7 +192,21 @@ function DisplayItems(){
                 ShoppingCartChildDiv.className="ShoppingCartChildDiv";
                 if(i == 0){
                     ShoppingCartChildDiv.innerHTML="Delete";
+                    ShoppingCartChildDiv.addEventListener("click", () => {
+                    const index = ShoppingCartList.indexOf(element);
+                    
+                    if (index !== -1) {
+                        ShoppingCartList.splice(index, 1); // poistaa elementin
+                        ReCalculateShoppingCart();
+                        DeleteItems(); // tyhjennä kaikki
+                        
+                        DisplayItems(); // päivitä näkyvät tiedot
+                        
+                        
+                }
+                });
                     ShoppingCartMotherDiv.appendChild(ShoppingCartChildDiv);
+
 
                 } else if(i == 1){
                     ShoppingCartChildDiv.innerHTML = element.price;
@@ -211,6 +227,26 @@ function DisplayItems(){
     DeleteMotherDivs.forEach(element => {
         element.remove();
     });
+    
+ }
+ function ReCalculateShoppingCart(){
+    let Sum1 = 0;
+    let Count = -1;
+    ShoppingCartList.forEach(element => {
+        Sum1+= element.price;
+    });
+    TotalSumNumber.innerHTML = "$"+Sum1.toFixed(2);
+    const CountMotherDivs = shoppingCart.querySelectorAll(".ShoppingCartMotherDiv")
+    CountMotherDivs.forEach(element => {
+        Count++;
+    });
+    ShoppingCartNumberOfItems.innerHTML = Count;
+ }
+ 
+ function CountItems(){
+    {
+
+    }
  }
 
 
